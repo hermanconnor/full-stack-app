@@ -1,0 +1,1 @@
+A REST API was created using Node.js and Express. This API helps manage a school database that contains information on users and courses. Users will be able to perform CRUD operations on existing courses. Postman was used to test routes.
