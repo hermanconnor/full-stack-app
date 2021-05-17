@@ -21,14 +21,14 @@ class CourseDetail extends Component {
     const { context } = this.props;
     const authUser = context.authenticatedUser;
 
-    const { course, student } = this.state;
+    const { course } = this.state;
     const { firstName, lastName } = this.state.student;
     // Show update & delete buttons if course belongs to authorized user
     return (
       <React.Fragment>
         <div className="actions--bar">
           <div className="wrap">
-            {authUser && authUser.emailAddress === student.emailAddress ? (
+            {authUser && authUser.id === course.id ? (
               <React.Fragment>
                 <Link to={`/courses/${course.id}/update`} className="button">
                   Update Course
