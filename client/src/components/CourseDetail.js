@@ -28,7 +28,7 @@ class CourseDetail extends Component {
       <React.Fragment>
         <div className="actions--bar">
           <div className="wrap">
-            {authUser && authUser.id === course.id ? (
+            {authUser && authUser.id === course.userId ? (
               <React.Fragment>
                 <Link to={`/courses/${course.id}/update`} className="button">
                   Update Course

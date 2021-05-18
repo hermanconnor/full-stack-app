@@ -7,7 +7,6 @@ class UpdateCourse extends Component {
     description: '',
     estimatedTime: '',
     materialsNeeded: '',
-    course: {},
     student: {},
     errors: [],
   };
@@ -18,11 +17,10 @@ class UpdateCourse extends Component {
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          title: data.title,
-          description: data.description,
-          estimatedTime: data.estimatedTime,
-          materialsNeeded: data.materialsNeeded,
-          course: data[0],
+          title: data[0].title,
+          description: data[0].description,
+          estimatedTime: data[0].estimatedTime,
+          materialsNeeded: data[0].materialsNeeded,
           student: data[0],
         });
       })
@@ -30,10 +28,7 @@ class UpdateCourse extends Component {
   }
 
   render() {
-    const { title, description, estimatedTime, materialsNeeded } =
-      this.state.course;
     const { errors } = this.state;
-
     const { firstName, lastName } = this.state.student;
 
     return (
@@ -48,23 +43,23 @@ class UpdateCourse extends Component {
             <React.Fragment>
               <div className="main--flex">
                 <div>
-                  <label htmlFor="courseTitle">Course Title</label>
+                  <label htmlFor="title">Course Title</label>
                   <input
                     onChange={this.change}
                     type="text"
-                    name="courseTitle"
-                    id="courseTitle"
-                    value={title || ''}
+                    name="title"
+                    id="title"
+                    value={this.state.title}
                   />
                   <p>
                     By {firstName} {lastName}
                   </p>
-                  <label htmlFor="courseDescription">Course Description</label>
+                  <label htmlFor="description">Course Description</label>
                   <textarea
                     onChange={this.change}
-                    name="courseDescription"
-                    id="courseDescription"
-                    value={description || ''}
+                    name="description"
+                    id="description"
+                    value={this.state.description}
                   ></textarea>
                 </div>
                 <div>
@@ -74,14 +69,14 @@ class UpdateCourse extends Component {
                     type="text"
                     id="estimatedTime"
                     name="estimatedTime"
-                    value={estimatedTime || ''}
+                    value={this.state.estimatedTime}
                   />
                   <label htmlFor="materialsNeeded">Materials Needed</label>
                   <textarea
                     onChange={this.change}
                     name="materialsNeeded"
                     id="materialsNeeded"
-                    value={materialsNeeded || ''}
+                    value={this.state.materialsNeeded}
                   ></textarea>
                 </div>
               </div>
